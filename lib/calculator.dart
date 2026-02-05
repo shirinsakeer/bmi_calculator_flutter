@@ -8,6 +8,18 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
+  String result="";
+  final heightcontroller=TextEditingController();
+  final weightcontroller=TextEditingController();
+  void Calculate(){
+    double h=double.parse(heightcontroller.text)/100;
+    double w=double.parse(weightcontroller.text);
+    double bmi=w/(h*h);
+    setState(() {
+      result="Your bmi is ${bmi.toStringAsFixed(2)}";
+    });
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,19 +33,19 @@ class _CalculatorState extends State<Calculator> {
               end: Alignment.bottomCenter,
               
               colors: [
-                const Color.fromARGB(255, 190, 167, 139),
-                const Color.fromARGB(255, 215, 136, 18),
+                const Color.fromARGB(255, 237, 236, 235),
+                const Color.fromARGB(167, 226, 107, 3),
               ],
               
             ),border: Border.all(color: Colors.white)
           ),
           child: Column(
             children: [
-              SizedBox(height: 20),
-              Text("BMI CALCULATOR",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+              SizedBox(height: 40),
+              Text("BMI CALCULATOR",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),),
               SizedBox(height: 30),
               Container(
-                height: 500,
+                height: 400,
                 width: 300,
                 
                 decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20)),
@@ -44,7 +56,7 @@ class _CalculatorState extends State<Calculator> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextField(
-                        
+                                  controller: heightcontroller,
                                   decoration: InputDecoration(
                                     fillColor: const Color.fromARGB(255, 220, 213, 213),
                                     filled: true,
@@ -63,7 +75,7 @@ class _CalculatorState extends State<Calculator> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextField(
-                        
+                            controller: weightcontroller,
                                   decoration: InputDecoration(
                                     fillColor: const Color.fromARGB(255, 218, 213, 213),
                                     filled: true,
@@ -86,10 +98,12 @@ class _CalculatorState extends State<Calculator> {
             child: ElevatedButton( style: 
              ElevatedButton.styleFrom(backgroundColor: Colors.amber,foregroundColor: Colors.black,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),      
                    onPressed: () {
-             
+             Calculate();
             }, child: Text("Calculate",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.deepPurple,fontSize: 20),)),
+            
           ),
-        )
+        ),
+        Text(result,style: TextStyle(color: Colors.red),),
                   ],
                   
                 ),

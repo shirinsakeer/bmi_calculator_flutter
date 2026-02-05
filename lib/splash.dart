@@ -17,8 +17,8 @@ class Splash extends StatelessWidget {
               end: Alignment.bottomCenter,
               
               colors: [
-                const Color.fromARGB(255, 190, 167, 139),
-                const Color.fromARGB(255, 215, 136, 18),
+               const Color.fromARGB(255, 237, 236, 235),
+                const Color.fromARGB(167, 226, 107, 3),
               ],
               
             ),border: Border.all(color: Colors.white)
